@@ -1,0 +1,67 @@
+const buttonColours = ["red", "blue", "green", "yellow"];
+const gamePattern = [];
+const userClickedPattern = [];
+
+let started = false;
+let level = 0;
+
+
+$(document).keypress(function () {
+    if (!started) {
+        $("#level-title").text("Level " + level);
+        nextSequence();
+        started = true;
+    }
+});
+
+
+$(".btn").click(function () {
+
+    const userChosenColour = $(this).attr("id");
+    userClickedPattern.push(userChosenColour);
+
+    playSound(userChosenColour);
+    animatePress(userChosenColour);
+
+});
+
+function checkAnswer(currentlevel){
+
+}
+
+function nextSequence() {
+
+    level++;
+
+    $("#level-title").text('level ' + level);
+
+    let randomNumber = Math.floor(Math.random() * 4);
+    let randomChosenColour = buttonColours[randomNumber];
+    gamePattern.push(randomChosenColour);
+
+    $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
+    playSound(randomChosenColour);
+
+}
+
+function playSound(name) {
+
+    let audio = new Audio("sounds/" + name + ".mp3");
+    audio.play();
+
+}
+
+function animatePress(currentColor) {
+
+    $("#" + currentColor).addClass("pressed");
+
+    setTimeout(function () {
+        $("#" + currentColor).removeClass("pressed");
+    }, 100);
+
+}
+
+
+
+//place of the code matter
+

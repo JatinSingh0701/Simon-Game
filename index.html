@@ -3,35 +3,71 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Simon</title>
+  <title>Simon Game</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 </head>
 
 <body>
-  <h1 id="level-title">Press A Key to Start</h1>
-  <div class="container">
-    <div lass="row">
 
+  <h1 id="level-title">
+    Press A Key to Start
+
+  </h1>
+  <div class="container">
+    <div class="row">
       <div type="button" id="green" class="btn green">
 
       </div>
-
       <div type="button" id="red" class="btn red">
 
       </div>
     </div>
-
     <div class="row">
-
       <div type="button" id="yellow" class="btn yellow">
 
       </div>
       <div type="button" id="blue" class="btn blue">
 
       </div>
-
     </div>
+
+  </div>
+
+  <div id="rules">
+    <h2 id="rule-title">
+
+      Simon Game Rules
+
+    </h2>
+
+    <ul id="rule_list">
+      <li>
+        The game has four colored buttons: red, blue, green, and yellow.
+      </li>
+      <li>
+        The game randomly generates a sequence of button presses, starting with one button press and adding one more
+        each round.
+      </li>
+      <li>
+        The player must repeat the sequence by pressing the buttons in the same order.
+      </li>
+      <li>
+        If the player enters the correct sequence, the game generates a new, longer sequence.
+      </li>
+      <li>
+        If the player enters the wrong sequence, the game ends and the player must start over.
+      </li>
+      <li>
+        The game keeps track of the player's score, which is the number of button presses in the longest sequence
+        entered correctly.
+      </li>
+      <li>
+        The game continues until the player makes a mistake or quits.
+
+      </li>
+
+    </ul>
 
   </div>
 

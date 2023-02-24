@@ -16,7 +16,15 @@ li{
   font-family: 'Press Start 2P', cursive;
   font-size: 3rem;
   margin: 5%;
-  color: #FEF2BF;
+  color: #f3c90b;
+}
+
+#start_button {
+  /* background-color: #011F3F; */
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  margin: 5%;
+  color: #f3c90b;
 }
 
 .container {

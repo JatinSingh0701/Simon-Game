@@ -8,11 +8,12 @@ let level = 0;
 
 // Handle key press event for desktop devices
 
-$(document).keypress(function () {
+$('#start_button').click(function () {
     if (!started) {
         startGame();
     }
 });
+
 
 // Handle click and touch events for buttons
 
@@ -31,6 +32,7 @@ function startGame() {
     $("#level-title").text("Level " + level);
     nextSequence();
     started = true;
+    $("#start_button").hide();
 }
 
 
@@ -86,15 +88,18 @@ function animatePress(currentColor) {
 // End the game and reset to initial state
 
 function endGame() {
+    
+    $('#level-title').text('Game Over ' + level);
+    $("#start_button").show().text('Restart');
+    $('body').addClass('game-over');
+
     started = false;
     level = 0;
     gamePattern.length = 0;
     userClickedPattern = [];
 
-    $('#level-title').text('Game Over, Click or tap Any Key to Restart');
-    $('body').addClass('game-over');
 
-    setTimeout(() => $('body').removeClass('game-over'), 200);
-
-
+    setTimeout(
+        () => $('body').removeClass('game-over'),
+        200);
 }

@@ -1,5 +1,3 @@
-'use strict';
-
 const buttonColours = ['red', 'blue', 'green', 'yellow'];
 
 const gamePattern = [];
@@ -16,9 +14,9 @@ $(document).keypress(function () {
     }
 });
 
-// Handle click event for buttons
+// Handle click and touch events for buttons
 
-$('.btn').click(function () {
+$('.btn').on('click touchstart', function () {
     const userChosenColour = $(this).attr('id');
     userClickedPattern.push(userChosenColour);
 
@@ -95,9 +93,3 @@ function endGame() {
 
     startGame();
 }
-
-// Handle touch events for mobile devices
-
-$('.btn').on('touchstart', function () {
-    $(this).click();
-});

@@ -28,10 +28,12 @@ $('.btn').on('click touchstart', function () {
 // Start the game
 
 function startGame() {
-    started = true;
-    level = 0;
+    $("#level-title").text("Level " + level);
     nextSequence();
+    started = true;
 }
+
+
 
 // Generate the next sequence
 
@@ -51,17 +53,19 @@ function nextSequence() {
 // Check the user's answer
 
 function checkAnswer(currentIndex) {
+
     if (gamePattern[currentIndex] === userClickedPattern[currentIndex]) {
         console.log('success');
         if (userClickedPattern.length === gamePattern.length) {
             setTimeout(nextSequence, 1000);
         }
-    } else {
-        console.log('Wrong');
 
+    } else {
+
+        console.log('Wrong');
+        endGame();
         playSound("wrong");
 
-        endGame();
     }
 }
 
@@ -87,9 +91,10 @@ function endGame() {
     gamePattern.length = 0;
     userClickedPattern = [];
 
-    $('#level-title').text('Game Over, Press Any Key to Restart');
+    $('#level-title').text('Game Over, Click or tap Any Key to Restart');
     $('body').addClass('game-over');
+
     setTimeout(() => $('body').removeClass('game-over'), 200);
 
-    startGame();
+
 }

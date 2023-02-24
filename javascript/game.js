@@ -88,8 +88,8 @@ function animatePress(currentColor) {
 // End the game and reset to initial state
 
 function endGame() {
-    
-    $('#level-title').text('Game Over ' + level);
+
+    $('#level-title').text('Game Over ' + level + ' level');
     $("#start_button").show().text('Restart');
     $('body').addClass('game-over');
 

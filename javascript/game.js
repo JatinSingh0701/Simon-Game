@@ -6,6 +6,13 @@ let userClickedPattern = [];
 let started = false;
 let level = 0;
 
+
+let touchStartTime;
+let touchStartLocation;
+let touchEndTime;
+let touchEndLocation;
+
+
 // Handle key press event for desktop devices
 
 $('#start_button').click(function () {
@@ -17,14 +24,57 @@ $('#start_button').click(function () {
 
 // Handle click and touch events for buttons
 
-$('.btn').on('click touchstart', function () {
-    const userChosenColour = $(this).attr('id');
-    userClickedPattern.push(userChosenColour);
+// $('.btn').on('click touchstart', function () {
+//     const userChosenColour = $(this).attr('id');
+//     userClickedPattern.push(userChosenColour);
 
-    playSound(userChosenColour);
-    animatePress(userChosenColour);
-    checkAnswer(userClickedPattern.length - 1);
+//     playSound(userChosenColour);
+//     animatePress(userChosenColour);
+//     checkAnswer(userClickedPattern.length - 1);
+// });
+
+
+
+
+$('.btn').on('click touchstart', function () {
+     let d = new Date();
+     touchStartTime = d.getTime();
+     touchStartLocation = { x: event.clientX, y: event.clientY };
+
+     const userChosenColour = $(this).attr('id');
+     userClickedPattern.push(userChosenColour);
+
+     playSound(userChosenColour);
+     animatePress(userChosenColour);
 });
+
+$('.btn').on('touchend', function () {
+     var d = new Date();
+     touchEndTime = d.getTime();
+     touchEndLocation = { x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY };
+     
+     doTouchLogic();
+});
+
+function doTouchLogic() {
+     const distance = Math.sqrt(Math.pow(touchEndLocation.x - touchStartLocation.x, 2) + Math.pow(touchEndLocation.y - touchStartLocation.y, 2));
+     const duration = touchEndTime - touchStartTime;
+
+     if (duration <= 100 && distance <= 10) {
+          // Person tapped their finger (do click/tap stuff here)
+          checkAnswer(userClickedPattern.length - 1);
+     }
+     if (duration > 100 && distance <= 10) {
+          // Person pressed their finger (not a quick tap)
+     }
+     if (duration <= 100 && distance > 10) {
+          // Person flicked their finger
+     }
+     if (duration > 100 && distance > 10) {
+          // Person dragged their finger
+     }
+}
+
 
 // Start the game
 

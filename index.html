@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Simon Game</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+</head>
+
+<body >
+
+  <h1 id="level-title">
+    Simon Game<br>
+  </h1>
+
+  <button id="start_button">Start Game</button>
+
+
+  <div class="container">
+    <div class="row">
+      <div type="button" id="green" class="btn green">
+
+      </div>
+      <div type="button" id="red" class="btn red">
+
+      </div>
+    </div>
+    <div class="row">
+      <div type="button" id="yellow" class="btn yellow">
+
+      </div>
+      <div type="button" id="blue" class="btn blue">
+
+      </div>
+    </div>
+
+  </div>
+
+  <div id="rules">
+    <h2 id="rule-title">Game Rules</h2>
+    <ul id="rule_list">
+      <li>Follow the pattern of colors in order</li>
+      <li>Click or tap the buttons to repeat the pattern</li>
+      <li>Each round will add a new color to the pattern</li>
+      <li>Get as far as you can without making a mistake!</li>
+    </ul>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="javascript/game.js" charset="utf-8"></script>
+
+</body>
+
+</html>
